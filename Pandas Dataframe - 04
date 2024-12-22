@@ -1,0 +1,53 @@
+# Tips and Trick for Python Panda
+# 04. pemilihan kolom pada dataframe berdasarkan tipe data
+
+
+import pandas as pd
+import numpy as np
+
+n_rows = 5
+n_cols = 2
+cols = ['bil_pecahan','bil_bulat']
+
+df = pd.DataFrame(np.random.randint(1,20, size= (n_rows, n_cols)), columns = cols)
+
+df['bil_pecahan'] = df['bil_pecahan'].astype('float')
+
+df.index = pd.util.testing.makeDateIndex(n_rows, freq= 'H')
+# ^^ generate data
+df = df.reset_index()
+
+df['text'] = list('ABCDE')
+
+# hasil=
+#       index                   bil_pecahan     bil_bulat   text
+#   0   2000-01-01:00:00:00     14.00           12          A
+#   1   2000-01-01:01:00:00     16.00           3           B
+#   2   2000-01-01:02:00:00     13.00           13          C
+#   3   2000-01-01:03:00:00     13.00           5           D
+#   4   2000-01-01:04:00:00     14.00           14          E
+
+
+print(df.dtypes)
+# ^^ hasil=
+#   index           datetime
+#   bil_pecahan     float
+#   bil_bulat       int
+#   text            object
+#   dtype = object
+
+
+
+# pilih kolom yang tipe datanya numerik
+df.select_dtypes(include = 'number')
+df.select_dtypes(include = 'float')
+df.select_dtypes(include = 'int')
+
+# pilih kolom yang tipe datanya string
+df.select_dtypes(include = 'object')
+
+# pilih kolom yang tipe datanya datetime
+df.select_dtypes(include = 'datetime')
+
+# pilih kolom yang tipe datanya numerik dan string
+df.select_dtypes(include = ['number', 'object'])
