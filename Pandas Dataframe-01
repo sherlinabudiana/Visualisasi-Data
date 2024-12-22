@@ -1,3 +1,21 @@
 # Tips and Trick for Python Panda
+# 01. Prefix dan Suffix pada seluruh kolom
 
-01. Prefix dan 
+
+import pandas as pd
+import numpy as np
+
+print (pd.__version__)
+# Hasil = 1.0.0
+
+print (np.__version__)
+# Hasil = 1.10.1
+
+
+n_rows = 5
+n_columns = 5
+
+columns = tuple('ABCDE')
+# ^^ hasil = ('A', 'B', 'C', 'D', 'E')
+
+df = pd.DataFrame(np.random.randint(1,10, size=(n_rows, n_columns)), columns=columns)
