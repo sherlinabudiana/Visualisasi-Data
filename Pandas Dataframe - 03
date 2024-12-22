@@ -1,0 +1,38 @@
+# Tips and Trick for Python Panda
+# 03. Konversi data string menjadi numerik
+
+
+import pandas as pd
+import numpy as np
+
+
+data = {'col1': ['1', '2', '3', 'text'],
+        'col2': ['1', '2', '3', '4']}
+
+df = pd.DataFrame(data)
+print(df)
+# ^^ hasil=
+#       col1    col2
+#   0   1       1
+#   1   2       3
+#   2   3       3  
+#   3   text    4
+
+
+# cek tipe data
+print(df.dtypes)
+# ^^ hasil=
+#   col1    object
+#   col2    object
+#   dtype: object 
+
+
+# konversi tipe data per kolom
+df_int = df.astype({'col2': 'int'})
+# col 1 karena ada 'text', tidak bisa dikonversi. akan error
+
+
+# konversi tipe data untuk seluruh data
+print(df.apply(pd.to_numeric, errors = 'coerce'))
+# coerce = jika tidak bisa dikonversi. akan diubah menjadi NaN.
+#           sisanya di kolom itu jadi float
