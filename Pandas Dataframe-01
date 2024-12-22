@@ -19,3 +19,19 @@ columns = tuple('ABCDE')
 # ^^ hasil = ('A', 'B', 'C', 'D', 'E')
 
 df = pd.DataFrame(np.random.randint(1,10, size=(n_rows, n_columns)), columns=columns)
+print(df)
+# ^^ hasil = 
+#       A   B   C   D   E
+#   0   (random number 5x5)
+#   1
+#   2
+#   3
+#   4
+
+
+#prefix = string di depan string tertentu.
+#suffix = string di akhir string tertentu 
+#           ex. ganti nama kolom jadi "Kolom_A"...
+
+df.add_prefix('Kolom_')
+df.add_suffix('_field')
