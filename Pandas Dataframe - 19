@@ -1,0 +1,36 @@
+# Tips and Trick for Python Panda
+# 19. formatting tampilan dataframe
+
+
+import pandas as pd
+import numpy as np
+
+
+n_rows = 5
+n_cols = 2
+cols = ['omset', 'operasional']
+
+df = pd.DataFrame(np.random.randint(1,20, size = (n_rows, n_cols)), columns = cols)
+
+df['omset'] = df['omset']*100_000
+df['operasional'] = df['operasional']*10_000
+
+df.index = pd.util.testing.makeDateIndex(n_rows, freq = 'D')
+df = df.reset_index()
+# ^^ mengubah index menjadi kolom biasa bernama index
+df = df.rename(columns= {'index': 'tanggal'})
+
+
+formatting = {'tanggal': '{%d/%m/%y}',
+           'operaisonal': 'Rp {:.2f}',
+           'omset': 'Rp {:.2f}'}
+# keynya sesuai nama kolom. urutan kolom boleh acak
+
+laporan = df.style.format(formatting)
+# ^^ tipe datanya bukan dataframe, tapi styler
+
+laporan.hide_index()
+laporan.set_caption('data omset dan operasional')
+# ^^ judul
+laporan.highlight_min('omset', color = 'pink')
+laporan.highlight_max('omset', color = 'lightgreen')
