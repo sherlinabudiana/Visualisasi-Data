@@ -1,0 +1,37 @@
+# Matplotlib
+# 06. membuat pie plot / pie chart
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = [25,45,55,125,255]
+kategori = ['A', 'B', 'C', 'D', 'E']
+
+
+# pie plot sederhana
+plt.pie(data, labels = kategori, autopct= '%1.1f%%', startangle=90)
+# para 1 = proporsi pie
+# para 2 = nama pie (opsional)
+# para 3 = menampilkan persentase areanya (opsional)
+# para 4 = rotasi pada pyplot. dimana si pie pertama bakal dimulai
+
+plt.title('contoh pie plot')
+plt.show()
+
+
+# pengaturan legend dan colour
+data = [25,45,55,125,255]
+kategori = ['A', 'B', 'C', 'D', 'E']
+warna = ['pink', 'cyan', 'e03364', 'yellowgreen', 'skyblue']
+
+plt.pie (data, labels= kategori, colors= warna, autopct= '%1.1f%%', startangle= 90)
+
+plt.legend()
+plt.show()
+
+# exploded pie plot
+explode_var = [0., 0., 0.2, 0., 0.08]
+# 0.0 = tidak diledakkan (dijauhkan dari center)
+
+plt.pie (data, labels= kategori, colors= warna, explode= explode_var, autopct= '%1.1f%%', startangle= 90)
