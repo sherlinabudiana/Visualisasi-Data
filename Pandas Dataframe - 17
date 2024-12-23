@@ -1,0 +1,20 @@
+# Tips and Trick for Python Panda
+# 17. resampling pada data deret waktu (time series data)
+
+
+import pandas as pd
+import numpy as np
+
+
+n_rows = 365*24
+n_cols = 2
+cols = ['col1', 'col2']
+
+df = pd.DataFrame(np.random.randint(1,20, size= (n_rows, n_cols)), columns = cols)
+
+df.index = pd.util.testing.makeDateIndex(n_rows, freq='H')
+
+# resampling data dengan interval monthly
+# >> pengelompokkan data berdasarkan bulan
+df.resample('M')['col1'].sum().to_frame()
+# ^^ index tanggal yang ditampilkan = tangggal terakhir di bulan itu
