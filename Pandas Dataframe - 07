@@ -1,0 +1,29 @@
+# Tips and Trick for Python Panda
+# 07. menghapus missing values (NaN)
+
+
+import pandas as pd
+import numpy as np
+
+n_rows = 30
+n_cols = 4
+cols = tuple('ABCDE')
+
+df = pd.DataFrame(np.random.randint(1,10, size = (n_rows, n_cols)), columns = cols)
+
+nan_mask = np.random.rand(n_rows, n_cols) < 0.2
+df[nan_mask] = np.nan
+
+# menghapus kolom yang ada missing value
+df.dropna(axis = 'columns')
+# menghapus baris yang ada missing value
+df.dropna(axis = 'rows')
+
+# lihat persentase missing value untuk setiap kolom
+df.isna().mean()
+
+
+# menghapus kolom yang mengandung missing value berdasarkan treshold
+treshold = len(df)*0.90
+# ^^ 90%nya non missing value
+df.dropna(tresh = treshold, axis = 'columns')
