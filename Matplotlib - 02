@@ -1,0 +1,76 @@
+# Matplotlib
+# 02. pengenalan pyplot
+
+# merupakan koleksi atau kumpulan fungsi yang menjadikan matplotlib dapat bekerja menyerupai MATLAB
+# pyplot API secara umum less-flexible dibandingkan object-oriented API
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.plot([2,5,7,11])
+plt.ylabel ('sumbu y')
+plt.show()
+
+# plt.show itu untuk merapihkan tulisan command terakhir
+# pemanggilan plot() dapat dilakukan dengan menyertakan hanya 1 atau 2 deret
+# jika hanya 1 deret bulangan, maka nilai tersebut akan dijadikan nilai Y.
+# sedangkan nilai x akan secara otomatik dibuatkan sebuah deret terurut mulai dari 0
+
+# terdapat parameter ketiga yang dapat digunakan untuk mengatur warna dan jenis plotting
+# nilai defaultnya adalah 'b-'... b = blue. - = garis
+plt.plot([1,2,3,4],[5,6,7,8],'ro')
+# ^^ r = red. o = dot. g = green. * = *. -- = garis putus putus
+#    s = kotak. ^ = segitiga
+plt.axis([0,6,0,20])
+# ^^ pemanggulan fungsi axis menyertakan sebuah list [xmin, xmax, ymin, ymax]
+plt.show()
+
+t = np.arange(0., 5., 0.2)
+# ^^ 0 = min. 5 = max. 0.2 = interval
+
+# multi plot dalam1 pemanggilan plot
+plt.plot(t,t, 'r--',
+         t,t**2, 'bs',
+         t,t**3, 'g^')
+plt.show()
+
+
+
+#plotting dengan keywords argument (kwargs)
+
+data = {'a': np.arange(50),
+        'c': np.random.randint(0,50,50),
+        'd': np.random.randn(50)}
+data['b'] = data ['a'] + 10* np.random.randn(50)
+data['d'] = np.abs(data['d']) *100
+
+plt.scatter('a', 'b', data =data)
+# yang ditampilin cuma a dan b. a = x. b = y
+plt.xlabel ('enrty a')
+plt.ylabel ('entry b')
+plt.show
+
+# dimensi 3 & 4
+plt.scatter('a', 'b', c='c', s='d' , data =data)
+# c = colour. s = size dotnya
+plt.xlabel ('enrty a')
+plt.ylabel ('entry b')
+plt.show
+
+
+# plotting untuk data categorical
+
+names = ['group a', 'group b', 'group c']
+values = [1,10,100]
+
+plt.plot(names, values)
+plt.show()
+
+#atau
+plt.scatter(names, values)
+plt.show()
+
+#atau
+plt.bar(names, values)
+plt.show()
