@@ -1,0 +1,31 @@
+# Tips and Trick for Python Panda
+# 16. menata ulang dataframe yang memiliki multiple indexes 
+#     menggunakan metode unstack
+
+
+import pandas as pd
+import numpy as np
+
+
+df = pd.read_csv('./data/titanicfull.csv')
+
+# kelompokkan berdasarkan pclass dan sex
+df.groupby(['sex', 'pclass']) ['survived'].mean().to_frame()
+# ^^ hasil =
+#                       survived
+#   sex     pclass
+#   female  1           0.96
+#           2           0.88
+#           3           0.49
+#   male    1           0.34
+#           2           0.14
+#           3           0.15
+# toframe cuma buat merapikan tabel
+
+# menata ulang dataframe dengan multiple indexes
+df.groupby(['sex', 'pclass']) ['survived'].mean().unstack()
+# ^^ hasil =
+#   pclass  1       2       3
+#   sex
+#   female  0.96    0.88    0.49
+#   male    0.34    0.14    0.15
