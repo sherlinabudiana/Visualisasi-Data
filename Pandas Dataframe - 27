@@ -1,0 +1,21 @@
+# Tips and Trick for Python Panda
+# 27. mengenal fungsi first() dan last()
+
+
+import pandas as pd
+import numpy as np
+
+
+data = {'dokter': ['Budi', 'Wati', 'Iwan', 'Budi', 'Budi', 'Wati'],
+        'pasien': ['Abdul', 'Rahmat', 'Asep', 'Joko', 'Wiwin', 'Lisa']}
+
+df = pd.DataFrame(data)
+
+
+# fungsi agregasi first dan last
+df.groupby('dokter') ['pasien'].count()
+# ^^ budi = 3. iwan = 1. wati = 2
+df.groupby('dokter') ['pasien'].first()
+# ^^ budi = abdul. wati = rahmat. iwan = asep
+df.groupby('dokter') ['pasien'].last()
+# ^^ budi = wiwin. wati = lisa. iwan = asep 
