@@ -1,0 +1,15 @@
+# Tips and Trick for Python Panda
+# 15. memecah string menjadi beberapa kolom baru
+
+
+import pandas as pd
+import numpy as np
+
+
+data = {'nama': ['Didi Kempot', 'Glenn Fredly', 'Mbah Surip'],
+        'tempat lahir': ['Surakarta', 'Jakarta', 'Mojokerto']}
+
+df = pd.DataFrame(data)
+
+df[['nama depan', 'nama belakang']] = df['nama'].str.split(' ', expand = True)
+# expand = true... mengijinkan outputnya berupa multiple columns
