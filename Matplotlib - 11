@@ -1,0 +1,42 @@
+# Matplotlib
+# 11. Violin plot / violin chart
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+np.random.seed(2)
+data = np.random.normal(loc=100, scale = 10, size = 200)
+# ^^ loc = mean. scale = std. size = jumlah data points
+
+
+# simple violin plot
+plt.violinplot(data)
+
+
+# pengaturan
+plt.violinplot(data,
+               showextrema=False,
+               showmeans=False,
+               showmedians=False,
+               quantiles=None)
+# extrema = garis tengah vertikaldan garis yang menandakan min max
+# mean = garis yang di tengah horizontal
+# quantiles = menerima sekumpulan data. misalkan mau menampilkan Q1 (0.25)
+
+
+# horizontal violin plot
+plt.violinplot(data, vert=False)
+
+
+# multiple violin plot
+np.random.seed(10)
+data1 = np.random.normal(100,10,200)
+data2 = np.random.normal(80,30,200)
+data3 = np.random.normal(90,20,200)
+data4 = np.random.normal(70,25,200)
+
+data = [data1, data2, data3, data4]
+
+plt.violinplot(data)
