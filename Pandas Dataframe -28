@@ -1,0 +1,24 @@
+# Tips and Trick for Python Panda
+# 28. mengenal fungsi explode dan implode list
+
+
+import pandas as pd
+import numpy as np
+
+
+data = {'Team': ['DC', 'Marvel'],
+        'Heroes': [['Batman', 'Superman', 'Wonder Woman', 'Aquaman', 'Green Lantern', 'Shazam'],
+                   ['Iron Man', 'Captain america', 'Ant-Man', 'Black Panther', 'Captain Marvel']]}
+
+df = pd.DataFrame(data)
+
+
+# explode list menjadi baris terpisah
+df1 = df.explode('Heroes')
+
+
+# implode baris menjadi list
+d = {'Team': ['DC', 'Marvel']}
+df2 = pd.DataFrame(d)
+
+df2['Imploded'] = df1.groupby(df1.index)['Heroes'].agg(list)
