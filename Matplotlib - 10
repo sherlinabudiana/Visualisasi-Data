@@ -1,0 +1,50 @@
+# Matplotlib
+# 10. Box plot / Box chart
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+np.random.seed(2)
+data = np.random.normal(loc=100, scale = 10, size = 200)
+# ^^ loc = mean. scale = std. size = jumlah data points
+
+
+# simple box plot
+plt.boxplot(data, labels=['Data'])
+
+plt.grid()
+plt.show()
+# ^^ cara baca:
+#       garis tengah box = median atau Q2
+#       kotaknya = Q1 dan Q3
+#       garis di luar kotak = nilai max dan min yang masih dalam jangkauan 1.5 IQR 
+#       marker bulat = outlier
+
+
+# notched box plot
+plt.boxplot(data, labels = ['Data'], notch = True)
+
+
+# pengaturan marker untuk outlier
+plt.boxplot(data, labels=['Data'], showfliers=False, flierprops={'markerfacecolor': 'r', 'marker': 'd'})
+# ^^ showfliers = kalau true, outliernya dimuncullin. false, ga dimunculin
+
+
+# membentuk horizontal box plot
+plt.boxplot(data, labels= ['Data'], vert = False)
+
+
+# mutiple boxplot
+np.random.seed(10)
+data1 = np.random.normal(100,10,200)
+data2 = np.random.normal(80,30,200)
+data3 = np.random.normal(90,20,200)
+data4 = np.random.normal(70,25,200)
+
+data = [data1, data2, data3, data4]
+labels = ['Data 1', 'Data 2', 'Data 3', 'Data 4']
+
+
+plt.boxplot(data, labels = labels)
