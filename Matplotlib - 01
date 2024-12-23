@@ -1,0 +1,93 @@
+# Matplotlib
+# 01. pengenalan matplotlib
+
+# adalah salah satu modul dalam pemograman python 
+# yang dapat digunaan untuk memvisualisasikan data dalam bentuk grafik
+# grafik akan digambarkan pada suatu figur,
+# yang di dalamnya terdiri dari satu atas lebih axes
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# buat plotting sederhana
+
+x = [1,2,3,4]
+y = [1,4,2,3]
+
+# buat figure dan axes
+fig, ax = plt.subplots()
+
+# melakukan plotting data pada axes
+ax.plot(x,y)
+
+
+
+# alternatif
+x = [1,2,3,4]
+y = [1,4,2,3]
+
+plt.plot(x,y)
+
+
+# figure = container. bisa mengandung banyak axes
+# axes = area gambarnya
+# axis = sumbu. jumlahnya bisa 2 atau 3
+
+
+# cara buat figure tanpa axes. 
+# tidak bisa melakukan visualisasi data
+fig = plt.figure()
+
+# buat figure dan axes
+# hasilnya sumbu x dan y
+fig, ax = plt.subplots()
+
+# buat figure 2x3 grid axes
+# hasilnya 6 axes. 2 baris dan 3 kolom
+fig, axs = plt.subplots(2,3)
+
+
+# 2 cara menggunkan matplotlib : 
+#   object oriented style (OO style)
+#   pyplot style
+
+
+
+# OO Style
+# secara eksplisit membuat figure dan axes,
+# dan memanggil methods dari keduanya
+
+x = np.linspace(0,2,100)
+# ^^ nilai terkecil = 0
+#    nilai terbesar = 2
+#    total jumlah data point = 100.
+#    interval antara data pointsnya selalu sama
+
+# visualisasi datanya:
+fig, ax = plt.subplots()
+ax.plot(x,x,label = 'linear')
+ax.plot(x,x**2,label = 'quadratic')
+ax.plot(x,x**3,label = 'cubic')
+
+ax.set_xlabel ('x label') 
+ax.set_ylabel ('y label')
+ax.set_title ('simple plot')
+ax.legend()
+
+
+# plyplot style
+# mengandalkan pyplot untuk mengelola figure dan axes. 
+# tidak perlu buat figure dan axes secara ekxplisit lagi
+# juga menggunakan fungsi pada pyplot untuk melakukan plotting
+
+x = np.linspace(0,2,100)
+
+plt.plot(x,x,label = 'linear')
+plt.plot(x,x**2,label = 'quadratic')
+plt.plot(x,x**3,label = 'cubic')
+
+plt.xlabel ('x label') 
+plt.ylabel ('y label')
+plt.title ('simple plot')
+plt.legend()
