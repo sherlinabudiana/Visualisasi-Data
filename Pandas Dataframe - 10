@@ -1,0 +1,17 @@
+# Tips and Trick for Python Panda
+# 10. mengganti nama kolom pada dataframe berdasarkan pola
+
+
+import pandas as pd
+import numpy as np
+
+
+n_rows =10
+df = pd.read_csv('./data/titanicfull.csv')
+df.columns = ['Pclass', 'Survival status', 'full Name', 'Sex ', ' Age', 'Sib SP', 'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked']
+
+# mau ganti Survival status jadi survival_status
+df.columns = df.columns.str.replace(' ', '_').str.lower()
+
+# memangkas kelebihan spasi
+df.columns = df.columns.str.lower().str.strip().str.replace(' ', '_')
