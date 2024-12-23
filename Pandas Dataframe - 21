@@ -1,0 +1,26 @@
+# Tips and Trick for Python Panda
+# 21. melakukan agregasi dengan fungsi agg()
+
+
+import pandas as pd
+import numpy as np
+
+
+df = pd.read_csv('./data/Iris.csv')
+# ^^ kolom = id, sepal length, sepal width, petal length, petal width, species
+
+
+# agregasi = groupby
+# contoh:
+df.groupby('Species') ['PetalLengthCm'].count()
+df.groupby('Species') ['PetalLengthCm'].mean()
+df.groupby('Species') ['PetalLengthCm'].median()
+
+
+# agregasi dengan agg()
+# mau menggunakan count, mean, dan median sekaligus
+df.groupby('Species') ['PetalLengthCm'].agg(['count', 'mean', 'median'])
+
+# agregasi dengan describe()
+df.groupby('Species')['PetalLengthCm']. describe()
+# ^^ hasil = count, mean, std, Q1, Q2, Q3, max
