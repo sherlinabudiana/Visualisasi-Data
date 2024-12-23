@@ -1,0 +1,37 @@
+# Matplotlib
+# 07. membuat table plot / table chart
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+data_uas = [ ['Bejo', 70], ['Tejo', 83], ['Cecep', 62], ['Wati', 74], ['Karti', 71]]
+
+
+# table plot OO style
+fig, ax = plt.subplots()
+
+table = plt.table(cellText = data_uas, loc = 'center')
+# loc = penempatan table plot di axes
+
+table.set_fontsize (14)
+table.scale(1,4)
+# ^^ ukuran kolom, ukuran baris. 
+# bukan jumlah... tapi ukuran panjang x lebar
+
+ax.axis(False)
+# tidak menampilkan sumbu x y
+
+plt.show()
+
+
+# table plot dengan pyplot style
+table = plt.table(cellText= data_uas, loc='center')
+
+ax = plt.gca()
+# ^^ karena axesnya ngga dideklarasi, 
+# plt.gca() ini buat dapetin axesnya. 
+# gca = get current axes
+ax.axis(False)
+
+plt.show()
