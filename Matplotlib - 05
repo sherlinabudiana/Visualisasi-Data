@@ -1,0 +1,62 @@
+# Matplotlib
+# 05. membuat bar plot / bar chart
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+data = [25,45,55,125,255]
+kategori = ['A', 'B', 'C', 'D', 'E']
+
+
+# bar plot sederhana
+plt.bar(kategori, data)
+plt.grid()
+
+plt.xlabel('kategori')
+plt.ylabel('data')
+plt.title('contoh bar plot')
+
+plt.show()
+
+
+# pengaturan grid dan colour
+plt.bar(kategori, data, colour = 'red', alpha = 0.25)
+
+plt.grid(linestyle = '--', linewidth = 2, axis = 'y', alpha = 0.50)
+# axis = bisa x, y, both. jika y = garis nyamping doang
+
+
+# horizontal bar plot
+plt.barh(kategori, data)
+
+# membalik urutan dari e,d,c,b,a menjadi a,b,c,d,e
+plt.barh(kategori[::-1], data[::-1])
+
+
+# stacked bar plot
+data1 = [25,85,75,40,60]
+data2 = [40,35,20,55,10]
+kategori = ['A', 'B', 'C', 'D', 'E']
+
+plt.bar(kategori, data1, label = 'data 1')
+plt.bar(kategori, data2, label = 'data 2', bottom = data1)
+# data 1 akan muncul dibawah. data 2 diatas
+# kalau mau data 2 yang dibawah... bottom = data 2 di plt bar data 1
+# kalau ngga pakai bottom... nanti yang data 1 bakal ketutupan data 2
+
+
+# grouped bar plot
+data1 = [25,85,75,40,60]
+data2 = [40,35,20,55,10]
+kategori = ['A', 'B', 'C', 'D', 'E']
+
+x = np.arange(len(kategori))
+# ^^ hasil = [0,1,2,3,4]. ini bakal jadi acuan letak x si barnya
+
+width = 0.35
+plt.bar(x-width/2, data1, width, label = 'data 1' )
+plt.bar(x+width/2, data2, width, label = 'data 2')
+
+plt.xticks (x, kategori)
+# ^^ nilai sumbu x mengacu pada index. xticks ini ngubah indexnya jadi si kategori
