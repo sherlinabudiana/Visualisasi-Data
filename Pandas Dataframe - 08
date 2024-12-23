@@ -1,0 +1,29 @@
+# Tips and Trick for Python Panda
+# 08. memeriksa kesamaan antar 2 kolom
+
+
+import pandas as pd
+import numpy as np
+
+data = {'A': [15,15,18,np.nan,12],
+        'B': [15,15,18,np.nan,12]}
+df = pd.DataFrame(data)
+
+# panda series
+# series = kolom. tipe datanya series
+# jadi. dataframe mengandung beberapa series (kolom)
+
+# memeriksa kesamaan dengan operator ==
+df['A'] == df['B']
+# ^^ hasil=
+#   0   true
+#   1   true
+#   2   true
+#   3   false (ngga bisa membandingkan NaN dengan Nan)
+#   4   true
+
+# memeriksa kesamaan dengan equals
+df['A'].equals(df['B'])
+# ^^ hasil = true
+
+# ^^ bisa juga buat membandingkan 2 dataframe
