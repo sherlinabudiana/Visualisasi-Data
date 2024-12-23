@@ -1,0 +1,55 @@
+# Matplotlib
+# 03. multiple subplots
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(0.0, 2.0, 0.01)
+s = np.sin(2* np.pi * x)
+
+
+# 1 subplot OO style
+fig, ax = plt.subplots()
+
+ax.plot(x,s)
+ax.set(xlabel = 'nilai x',
+       ylabel = 'nilai sin(x)',
+       title = 'visualisasi nilai sin')
+ax.grid()
+plt.show()
+
+
+
+x1 = np.linspace(0.0, 5.0, 100)
+x2 = np.linspace(0.0, 5.0, 100)
+
+y1 = np.cos(2 * np.pi *x1)
+y2 = np.cos(2 * np.pi *x2)
+
+
+# multiple subplots with OO style
+fig, (ax1,ax2) = plt.subplots(2,1)
+# ^^ 2 baris, 1 kolom
+fig.suptitle('multiple subplots')
+
+ax1.plot(x1,y1, 'ro-')
+ax1.set_ylabel('nilai cos x1')
+
+ax2.plot(x2,y2, 'g.-')
+ax1.set_ylabel('nilai $cos (x_2)$')
+plt.show()
+
+
+# multiple subplots with pyplot style
+plt.subplot(2,1,1)
+# 2 baris, 1 kolom, parameter 3 = mulai mengendalikan axes 1
+plt.plot(x1,y1, 'ro-')
+plt.title('multiple subplots')
+plt.ylabel('nilai cos x1')
+
+plt.subplot(2,1,2)
+plt.plot(x2,y2, 'g.-')
+plt.ylabel('nilai cos x2')
+
+plt.show()
