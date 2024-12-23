@@ -1,0 +1,21 @@
+# Tips and Trick for Python Panda
+# 22. memantau memory usage suatu dataframe
+
+
+import pandas as pd
+import numpy as np
+
+
+df_titanic = pd.read_csv('./data/titanicfull.csv')
+df_iris= pd.read_csv('./data/Iris.csv')
+
+
+# memantau penggunaan memory di level dataframe
+df_titanic.info(memory_usage='deep')
+# ^^ 463 kb
+df_iris.info(memory_usage='deep')
+# ^^ 16.3 kb
+
+# memantau penggunaan memory di setiap kolomnya
+df_titanic.memory_usage(deep=True)
+# ^^ hasil = tabel [nama kolom, memory usage(byte)]
