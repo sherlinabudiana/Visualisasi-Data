@@ -1,0 +1,63 @@
+# Matplotlib
+# 08. membuat scatter plot / scatter chart
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = [2,4,5,8,10,11,11,5,11,7]
+y = [1,1,5,2,2,5,3,3,5,4,4,5]
+
+
+# standard scatter plot
+plt.scatter (x,y, label = 'data 1', color = 'r')
+plt.legend()
+plt.show()
+
+
+# multiple scatter plot
+x1 = [2,4,5,8,10,11,11,5,11,7]
+y1 = [1,1,5,2,2,5,3,3,5,4,4,5]
+
+x2 = [8,4,5,9,3,1,5,4,7,2,3,9]
+y2 = [1,5,2,9,9,4,1,7,3,7,5,1]
+
+plt.scatter(x1,y1, label = 'Data 1', color = 'r')
+plt.scatter(x2,y2, label = 'Data 2', color = 'b')
+plt.legend()
+plt.show
+
+
+# pengukuran marker
+plt.scatter(x1,y1, color = 'cyan', linewidths = 1, marker = 's', edgecolor= 'red', s =100)
+plt.scatter(x2,y2, color = 'yellow', linewidths = 2, marker = '^', edgecolors= 'blue', s = 200 )
+# ^^ s = ukuran marker
+
+# data multi dimensi
+
+from sklearn.datasets import load_iris
+iris = load_iris()
+features = iris['data'].T
+
+iris.keys()
+# ^^ hasil = ['data', 'target', 'frame', 'target_names', 'DESCR', 'feature_names', 'filename']
+
+iris['data']
+iris['feature_names']
+
+features = iris['data'].T
+# ^^ dari yang awalnya 4 kolom, sekarang jadi 4 baris
+
+iris['target']
+iris['target_names']
+
+plt.scatter(features[0], features[1], 
+            alpha= 0.2, 
+            s=100*features[3],
+            c = iris['target'],
+            cmap = 'viridis')
+# cmap = colour map
+
+plt.colorbar()
+# ^^ memunculkan legend heatmapnya
+plt.show()
