@@ -1,0 +1,27 @@
+# Tips and Trick for Python Panda
+# 24. UTC dan konversi time zone
+
+
+import pandas as pd
+import numpy as np
+
+
+# persiapan series (kolom)
+s = pd.Series(range(1591683521, 1592201921, 3600))
+# ^^ detik random, detik random, detik per jam
+# epoch time / unix timestamp = jumlah detik sejak tanggal 1 jan 1970
+s = pd.to_datetime(s, unit= 's')
+# ^^ hasil=
+#   0   2020-06-09 06:18:41
+#   1   2020-06-09 07:18:41
+#   2   2020-06-09 08:18:41
+#   ...
+
+
+# pengaturan zona waktu
+s = s.dt.tz_localize('UTC')
+# ^^ set hasil tadi menjadi UTC
+
+# konversi ke zona waktu lain
+s = s.dt.tz_convert('Asia/Jakarta')
+s = s.dt.tz_convert('Australia/Hobart')
