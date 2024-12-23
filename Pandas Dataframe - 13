@@ -1,0 +1,26 @@
+# Tips and Trick for Python Panda
+# 13. konversi nilai numerik ke da;am sejumlah kategori
+
+
+import pandas as pd
+import numpy as np
+
+
+n_rows = 5
+n_cols = 1
+cols = ('usia')
+
+df = pd.DataFrame(np.random.randint(1,99, size = (n_rows, n_cols)), columns = cols)
+
+df ['kelompok usia'] = pd.cut(df['usia'],
+                              bins= [0,15,65,99],
+                               labels = ['anak', 'dewasa', 'manula'] )
+# nilai bins = pemisahnya. 0-18.18-65. 65-99
+# 
+# ^^ hasil =
+#       usia    kelompok usia
+#   0   8       anak
+#   1   10      anak
+#   2   94      manula
+#   3   12      anak
+#   4   49      dewasa
