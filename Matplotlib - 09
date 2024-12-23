@@ -1,0 +1,18 @@
+# Matplotlib
+# 09. matplotlib style
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+# fungsi plotting
+# ^^ sebuah function yang berisikan kode untuk membuat bar plot. 
+# bernama gambar_barplot
+
+
+# matpltlib style
+plt.style.available
+# ^^ menghasilkan list style yang available. otomatis menggunakan clasic
+plt.style.use('ggplot')
+gambar_barplot()
