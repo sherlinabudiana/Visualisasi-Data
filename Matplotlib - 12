@@ -1,0 +1,43 @@
+# Matplotlib
+# 12. twin axes
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+x = np.linspace(1,10,25)
+
+fig, ax1 = plt.subplots()
+
+ax1.plot(x, np.exp(x), 'bs-', label = 'exp')
+ax2 = ax1.twinx()
+# ^^ meghasilkan axes ax2 yang diletakkan di atas axes ax1
+ax2.plot(x, np.log(x), 'ro-', labels='log')
+
+fig.suptitle('contoh twin axes')
+fig.legend(loc = 'upper left')
+# ^^ ditaro di figure karena ada 2 axes
+
+
+
+
+def C2F(celcius = 0):
+    return (celcius*1.8) + 32
+
+def konversi_sumbu(ax1):
+    y1,y2 = ax1.get_ylim()
+    ax2.set_ylim(C2F(y1), C2F(y2))
+    ax2.figure.canvas.draw()
+
+
+x = np.random.randint(16,40, size = 30)
+
+fig,ax1 = plt.subplots()
+ax2 = ax1.twinx()
+
+ax1.callbacks.connect ('ylim_changed', konversi_sumbu)
+ax1.plot(x)
+
+fig.suptitle('temperatur udara')
+plt.show()
