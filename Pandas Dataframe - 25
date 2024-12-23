@@ -1,0 +1,23 @@
+# Tips and Trick for Python Panda
+# 25. pengaturan tampilan
+
+
+import pandas as pd
+import numpy as np
+
+
+df = pd.read_csv('./data/titanicfull.csv')
+
+pd.set_option('display.max_rows', 5)
+# ^^ menentukan jumlah max baris by default
+pd.set_option('display.max_columns', 6)
+# ^^ menentukan jumlah max kolom by default
+pd.set_option('display.max_colwidth', 20)
+# ^^ menentukan jumlah max karakter di tiap kolom
+
+
+pd.reset_option('display', silent = True)
+# ^^ seperti sebelum disetting
+
+pd.describe_option()
+# ^^ untuk lihat apa saja yang bisa diatur
