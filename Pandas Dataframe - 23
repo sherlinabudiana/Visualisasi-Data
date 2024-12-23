@@ -1,0 +1,19 @@
+# Tips and Trick for Python Panda
+# 23. seleksi baris pada dataframe menggunakan fungsi query()
+
+
+import pandas as pd
+import numpy as np
+
+
+data = {'kolom_satu': [1,2,3,4,5],
+        'kolom dua': [10,20,30,40,50]}
+
+df = pd.DataFrame(data)
+
+
+# seleksi baris dengan query()
+df.query('kolom_satu > 2')
+df.query('`kolom dua` > 30')
+# ^^ karena ada spasi, nama kolom harus diapit backtick (``)
+
