@@ -1,0 +1,24 @@
+# Tips and Trick for Python Panda
+# 33. menampilkan nilai kumulatif
+
+
+import pandas as pd
+import numpy as np
+
+
+data = {'pemain': ['budi', 'joni', 'iwan', 'budi', 'budi', 'iwan', 'asep', 'joni'],
+        'goal': [2,1,3,1,1,2,2,3]}
+
+df = pd.DataFrame(data)
+
+
+df['goal'].cumsum().to_frame()
+
+df['jumlah goal kumulatif'] = df['goal'].cumsum()
+
+df['jumlah goal kumulatif per pemain'] = df.groupby('pemain') ['goal'].cumsum()
+
+df['goal'].cummax()
+df['goal'].cummin()
+df['goal'].cumprod()
+# ^^ hasil perkalian kumulatif
