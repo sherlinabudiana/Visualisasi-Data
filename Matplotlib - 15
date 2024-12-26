@@ -1,0 +1,22 @@
+# Matplotlib
+# 15. 3d area plotting
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+n = np.linspace(-3.0, 3.0, 100)
+x,y = np.meshgrid(n,n)
+z= np.sqrt(x**2 + y**2)
+
+
+fig = plt.figure()
+ax = plt.axes(projection = '3d')
+
+ax.plot_wireframe(x,y,z, color= 'orange')
+
+
+# 3d surface plot
+ax.plot_surface(x,y,z, color = 'orange')
+ax.plot_surface(x,y,z, cmap = 'viridis')
