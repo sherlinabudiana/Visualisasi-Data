@@ -1,0 +1,18 @@
+# Tips and Trick for Python Panda
+# 36. menyatukan kolom dengan str.cat()
+
+
+import pandas as pd
+import numpy as np
+
+
+data = {'nama': ['bayu', 'indra', 'devi', 'agni'],
+        'jenis kelamin': ['L', 'L', 'P', 'L'], 
+        'usia': [23,21,22,25]}
+
+df = pd.DataFrame(data)
+
+
+df['nama'].str.cat(df['jenis kelamin'], sep= ', ').to_frame()
+
+df['nama'].str.cat(df['usia'].astype('str'), sep= ' - ').to_frame()
