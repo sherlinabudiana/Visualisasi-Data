@@ -1,0 +1,52 @@
+# Matplotlib
+# 16. Plot lifecycle
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.ticker import FuncFormatter
+
+data = {'item a': 109438,
+        'item b': 103569,
+        'item c': 112214,
+        'item d': 112591,
+        'item e': 100934,
+        'item f': 103660,
+        'item g': 137351,
+        'item h': 123381,
+        'item i': 135841,
+        'item j': 104437}
+
+items = tuple(data.keys())
+
+count = tuple(data.values())
+
+
+# simple plot
+
+fig, ax = plt.subplots()
+
+ax.barh(items, count)
+
+
+plt.style.available
+plt.style.use('bmh')
+
+
+labels = ax.get_xticklabels()
+plt.setp(labels, rotation = 45, horizontalalignment = 'right')
+
+
+def ribuan (x, pos):
+    return f'{int(x/1000)}K'
+
+formatter = FuncFormatter(ribuan)
+ax.xaxis.set_major_formatter(formatter)
+
+
+ax.axvline(np.mean(count), ls= '--', color = 'red')
+
+
+fig.canvas.get_supported_filetypes()
+fig.savefig('sales.png', transparent=False, dpi=80)
+
