@@ -1,0 +1,17 @@
+# Tips and Trick for Python Panda
+# 37. seleksi baris dengan banyak kriteria
+
+
+import pandas as pd
+import numpy as np
+
+
+df = pd.read_csv('./data/titanicfull.csv')
+
+
+df[(df['sex']=='female') & 
+    (df['age']>=60) & 
+    (df['embarked'] == 'S') & 
+    (df['survived'] == 1)]
+
+
