@@ -1,0 +1,27 @@
+# Tips and Trick for Python Panda
+# 34. mapping dengan applymap()
+
+
+import pandas as pd
+import numpy as np
+
+
+df =pd.DataFrame( {'jenis kelamin': ['pria', 'wanita', 'lelaki', 'Lelaki', 'perempuan'],
+                    'usia': [23,21,24,22,21],
+                    'shift': ['pagi', 'siang', 'malam', 'Siang', 'Pagi']})
+
+
+df.applymap(lambda x: x.lower() if type(x) == str else x)
+
+
+mapping=   {'pria': 'L',
+            'lelaki': 'L',
+            'wanita': 'P',
+            'perempuan': 'P',
+            'pagi': 1,
+            'siang': 2,
+            'malam': 3}
+df.applymap(mapping.get)
+
+
+df['jenis kelamin', 'shift'] = df['jenis kelamin', 'shift'].applymap(mapping.get)
