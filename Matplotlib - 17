@@ -1,0 +1,41 @@
+# Matplotlib
+# 17. style sheets
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+plt.style.available
+
+plt.style.use('ggplot')
+
+
+# membuat style sendiri
+# isi file: 
+# axes.titlesize : 24
+# axes.labelsize : 20
+# axes.linewidth : 3
+# axes.markersize : 10
+# xtick.labelsize : 16
+# ytick.labelsize : 16
+# save file. contoh nama: style_ku_mplstyle
+
+plt.style.use('./style_ku_mplstyle')
+
+
+# multiple style
+plt.style.use(['seaborn', 'dark_background'])
+# ^^ pertama akan menerapkan seaborn, 
+# diatasnya akan diterapkan dark background. jika bersifat overlapping
+
+
+# temporary styling
+
+plt.style.use('ggplot')
+plt.plot(np.sin(np.linspace(0,2*np.pi)), 'r-o')
+plt.show()
+
+with plt.style.context('dark_background'):
+    plt.plot(np.sin(np.linspace(0,2*np.pi)), 'r-o')
+plt.show()
