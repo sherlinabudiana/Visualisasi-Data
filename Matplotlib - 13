@@ -1,0 +1,28 @@
+# Matplotlib
+# 13. 3d plot / 3d chart
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+# 3d axes
+fig = plt.figure()
+ax = plt.axes(projection='3d')
+
+plt.show()
+
+
+# plotting sederhana
+z = np.linspace(0,1,100)
+x = z* np.sin(20*z)
+y = z* np.cos(20*z)
+
+fig = plt.figure()
+ax = plt.axes(projection= '3d')
+
+ax.plot(x,y,z, color= 'red')
+
+
+# 3d scatter plot
+ax.scatter(x,y,z, color= 'red')
