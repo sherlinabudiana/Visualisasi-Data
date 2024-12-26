@@ -1,0 +1,17 @@
+# Tips and Trick for Python Panda
+# 40. mengakses sekelompok data dengan get_group()
+
+
+import pandas as pd
+import numpy as np
+
+
+df = pd.read_csv('./data/titanicfull.csv')
+
+
+grouped_df = df.groupby('sex')
+grouped_df.get_group('female').head(10)
+
+grouped_df = df.groupby('survived')
+grouped_df.get_group(1).head(10)
+
