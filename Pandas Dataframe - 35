@@ -1,0 +1,22 @@
+# Tips and Trick for Python Panda
+# 35. mmemadukan agregasi dengan transform()
+
+
+import pandas as pd
+import numpy as np
+
+
+d = {'no nota': [1,1,1,2,2,3,4,5],
+    'kopi': ['latte', 'cappuccino', 'espresso', 'latte', 'espresso', 'cappuccino', 'latte', 'espresso'],
+    'harga': [50,60,80,150,120,660,100,40]}
+
+df = pd.DataFrame(d)
+
+
+df.groupby('no nota') ['harga'].sum()
+
+
+df['total harga'] = df.groupby('no nota') ['harga'].transform(sum)
+
+
+df['total omset'] = df.groupby('kopi') ['harga'].sum()
