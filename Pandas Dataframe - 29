@@ -1,0 +1,19 @@
+# Tips and Trick for Python Panda
+# 29. random sampling 
+
+
+import pandas as pd
+import numpy as np
+
+
+data = {'col1': [1,2,3,4,5],
+        'col2': [10,20,30,40,50]}
+df = pd.DataFrame(data)
+
+
+# random sampling tanpa replacement
+# data yang sudah disampling, tidak akan disampling lagi
+df.sample(n=4, replace=False, random_state=0)
+
+# dengan replacement
+df.sample(n=4, replace=True, random_state=0)
