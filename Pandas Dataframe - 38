@@ -1,0 +1,12 @@
+# Tips and Trick for Python Panda
+# 38. parameter header dan skiprows
+
+
+import pandas as pd
+import numpy as np
+
+
+df = pd.read_csv('./data/iris_error.csv')
+
+df = pd.read_csv('./data/iris_error.csv', header = 2, skiprows = [5,6])
+
