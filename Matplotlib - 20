@@ -1,0 +1,33 @@
+# Matplotlib
+# 20. visualisasi data yang tersimpan pada pandas dataframe
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+
+df = pd.DataFrame({
+    'nama': ['cecep', 'karti', 'bejo', 'tejo', 'asep', 'wati', 'amat'],
+    'usia': [23,78,22,19,45,33,20],
+    'gender': ['L', 'P', 'L', 'L', 'L', 'P', 'L'],
+    'provinsi': ['jabar', 'jatim', 'jabar', 'jatim', 'jabar', 'jateng', 'jateng'],
+    'n_anak': [2,0,0,3,2,1,4],
+    'n_pets': [5,1,0,5,2,2,3]
+})
+
+df.plot(kind = 'scatter', x='n_anak', y='n_pets', color ='red')
+
+df[['usia']].plot(kind = 'hist', bins = [0,20,40,60,80,100])
+
+df.plot(kind = 'line', x= 'nama', y= 'n_anak', color = 'green')
+
+ax = plt.gca()
+df.plot(kind = 'line', x= 'nama', y= 'n_anak', color = 'green', ax = ax)
+df.plot(kind = 'line', x= 'nama', y= 'n_pets', color = 'red', ax = ax)
+
+df.plot(kind = 'bar', x = 'nama', y = 'usia')
+
+df.groupby('provinsi') ['nama'].count().plot(kind = 'bar')
+
+df.groupby(['provinsi', 'gender']).size().unstack().plot(kind = 'bar', stacked = True)
