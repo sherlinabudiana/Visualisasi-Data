@@ -1,0 +1,20 @@
+# Tips and Trick for Python Panda
+# 47. deteksi dan penanganan kolom dengan tipe data yang beragam
+
+
+import pandas as pd
+import numpy as np
+
+
+d = {'nama': ['bejo', 'tejo', 'wati', 'tiwi', 'cecep'],
+    'ipk': [2,'3',3,2.75,'3.25']}
+
+df = pd.DataFrame(d)
+
+df.dtypes
+
+df['ipk'].apply(type)
+
+df['ipk'].apply(type).value_counts()
+
+df['ipk'].apply(type).astype(float)
