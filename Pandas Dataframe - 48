@@ -1,0 +1,19 @@
+# Tips and Trick for Python Panda
+# 48. cummulative counts dengan cumcount()
+
+
+import pandas as pd
+import numpy as np
+
+
+d = {'penjual': ['bejo', 'tejo', 'wati', 'bejo', 'cecep', 'tejo', 'wati', 'bejo'],
+    'barang' : ['monotior', 'monitor', 'keyboard', 'mouse', 'keyboard', 'monitor', 'laptop', 'monitor']}
+
+df = pd.DataFrame(d)
+
+
+df['count tiap penjual'] = df.groupby('penjual').cumcount() +1
+
+df['count tiap barang'] = df.groupby('barang').cumcount() +1
+
+df['count tiap pasangan'] = df.groupby(['penjual', 'barang']).cumcount() +1
