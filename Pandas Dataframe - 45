@@ -1,0 +1,12 @@
+# Tips and Trick for Python Panda
+# 45. memadukan loc dan iloc untuk seleksi data
+
+
+import pandas as pd
+import numpy as np
+
+
+df = pd.read_csv('./data/titanicfull.csv')
+
+df.iloc [15:20, :].loc [:, 'name': 'age']
+df.loc [:, 'name': 'age'].iloc [15:20, :]
