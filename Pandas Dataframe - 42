@@ -1,0 +1,14 @@
+# Tips and Trick for Python Panda
+# 42. mengurutkan data berdasarkan kolom tertentu
+
+
+import pandas as pd
+import numpy as np
+
+
+df = pd.read_csv('./data/titanicfull.csv')
+
+
+df.sort_values ('age')
+df.sort_values ('age', ascending= True)
+df.sort_values (['survived', 'age'])
