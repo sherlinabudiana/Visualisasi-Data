@@ -1,0 +1,28 @@
+# Matplotlib
+# 19. Animasi
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.animation import FuncAnimation
+from IPython import display
+
+fig = plt.figure() 
+plt.xlim(0,4)
+plt.ylim(-2,2)
+
+
+line = plt.plot([])[0]
+
+
+def animate (i):
+    x = np.linspace(0,4,1000)
+    y = np.sin(2*np.pi * (x-0.01*i))
+    line.set_data (x,y)
+    return line
+
+anim = FuncAnimation(fig, animate, frames = 200, internal = 20)
+
+video = anim.to_html5_video()
+html = display.HTML(video)
+display.display(html)
