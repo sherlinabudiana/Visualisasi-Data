@@ -1,0 +1,18 @@
+# Tips and Trick for Python Panda
+# 50. membuat kolom baru dengan looping dan f-string
+
+
+import pandas as pd
+import numpy as np
+
+
+d = {'penjual': ['bejo', 'tejo', 'wati', 'bejo', 'cecep', 'tejo', 'wati', 'bejo'],
+    'barang' : ['monotior', 'monitor', 'keyboard', 'mouse', 'keyboard', 'monitor', 'laptop', 'monitor']}
+
+df = pd.DataFrame(d)
+
+
+cols = ['penjual', 'barang']
+
+for col in cols:
+    df[f'count tiap {col}'] = df.groupby(col).cumcount() +1
