@@ -1,0 +1,29 @@
+# Matplotlib
+# 22. visualisasi data yang tersimpan pada pandas dataframe (3)
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+
+df = pd.read_csv('./dataset/2020.csv')
+
+df.rename(columns= {'Country name': 'Country',
+                    'Perceptions of corruption': 'Corruption',
+                    'Freedom to make life choices': 'Freedom'}, 
+            inplace=True)
+
+
+df[:5].plot(x = 'Country', y= ['Corruption', 'Freedom', 'Generosity', 'Social support'], kind = 'bar')
+
+df[:5].plot(x = 'Country', y= ['Corruption', 'Freedom', 'Generosity', 'Social support'], kind = 'line')
+
+df.plot(y= ['Corruption', 'Freedom', 'Generosity', 'Social support'], kind = 'box')
+
+df.plot(x = 'Country', y= 'Freedom', kind = 'scatter')
+
+df.plot(x = 'Country', y= 'Corruption', kind = 'hist', bins = 10)
+
+df.plot(x = 'Country' , y= ['Corruption', 'Freedom', 'Generosity', 'Social support'], kind = 'hist', subplots=True, layout = (2,2))
+
