@@ -1,0 +1,24 @@
+# Tips and Trick for Python Panda
+# 53. membuat kategori baru berdasarkan treshold
+
+
+import pandas as pd
+import numpy as np
+
+
+d = {'hobi': ['jogging', 'mancing', 'renang', 'mancing', 'mancing', 'baca', 'baca', 'mancing', 'forografi', 'mancing', 'camping']}
+
+df = pd.DataFrame(d)
+
+
+df['hobi'].value_counts()
+
+persentase = df['hobi'].value_counts(normalize=True)
+
+treshold = 0.1
+hobi_lain = persentase[persentase<treshold].index
+
+df['hobi'] = df['hobi'].replace(hobi_lain, 'lainnya')
+
+df['hobi'].value_counts(normalize=True)
+
