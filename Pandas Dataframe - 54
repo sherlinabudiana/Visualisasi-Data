@@ -1,0 +1,20 @@
+# Tips and Trick for Python Panda
+# 54. menyimpan datframe dalam bentuk csv
+
+
+import pandas as pd
+import numpy as np
+
+
+d = {'nama': ['bayu', 'indra', 'devi', 'agni'],
+    'jenis kelamin': ['L', 'L', 'P', 'L'],
+    'usia': [23,21,22,25]}
+
+df = pd.DataFrame(d)
+
+df.to_csv('data_peserta.csv')
+
+df.to_csv('data_peserta.csv', index = False)
+
+
+df = pd.read_csv('data_peserta.csv', index_col = 0)
