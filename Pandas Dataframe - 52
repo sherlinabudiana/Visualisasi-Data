@@ -1,0 +1,19 @@
+# Tips and Trick for Python Panda
+# 52. transformasi kolom menjadi baris
+
+
+import pandas as pd
+import numpy as np
+
+
+d = {'kode area': [123,456,789,321],
+    'pabrik': [4,2,5,0],
+    'gudang': [2,4,7,3],
+    'toko': [64,32,15,24]}
+
+df = pd.DataFrame(d)
+
+
+df = df.melt(id_vars='kode_area',
+            var_name='jenis_bangunan',
+            value_name= 'jumlah')
