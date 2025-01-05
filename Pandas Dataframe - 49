@@ -1,0 +1,19 @@
+# Tips and Trick for Python Panda
+# 49. seleksi kolom dengan
+
+
+import pandas as pd
+import numpy as np
+
+
+df = pd.read_csv('./data/Iris.csv')
+
+df['SepalWidthCm'].to_frame().head()
+
+part = 'Sepal'
+df[f'{part}WidthCm'].to_frame().head()
+
+df[['PetalWidthCm', 'PetalLengthCm']]
+
+part = 'Sepal'
+df[[f'{part}WidthCm', f'{part}LengthCm']].head()
