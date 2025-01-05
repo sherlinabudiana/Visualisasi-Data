@@ -1,0 +1,16 @@
+# Tips and Trick for Python Panda
+# 56. mengeluarkan kolom dengan pop()
+
+
+import pandas as pd
+import numpy as np
+
+
+d = {'nama': ['bayu', 'indra', 'devi', 'agni'],
+    'jenis kelamin': ['L', 'L', 'P', 'L'],
+    'usia': [23,21,22,25]}
+
+df = pd.DataFrame(d)
+
+
+usia = df.pop('usia').to_frame()
